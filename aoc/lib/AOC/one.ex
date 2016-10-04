@@ -7,14 +7,14 @@ defmodule AOC.One do
   Start the counter
   """
   def start_link do
-    GenServer.start_link(__MODULE__, :ok, [])
+    GenServer.start_link(__MODULE__, :ok, name: :calculator)
   end
 
   @doc """
   Calculates the floor where santa needs to go
   """
-  def calculate(server, input) do
-    GenServer.call(server, {:calculate, input})
+  def calculate(input) do
+    GenServer.call({:calculate, input}, :calculator)
   end
 
   ## Private Server Application
@@ -22,8 +22,8 @@ defmodule AOC.One do
   @doc """
   Actuall worker
   """
-  def handle_call({:calculate, input}) do
-
+  def handle_call({:calculate, input}, from) do
+    {:reply, sum_list(to_charlist(input), total=0)}
   end
 
   @doc """
@@ -33,13 +33,13 @@ defmodule AOC.One do
     {:noreply, state}
   end
 
-  defp sum_list([]) do
-    0
+  defp sum_list([], total) do
+    total
   end
-  defp sum_list(["("|tail]) do
-
+  defp sum_list(["("|tail], total) do
+    sum_list([tail], total + 1)
   end
-  defp sum_list([")"|tail]) do
-
+  defp sum_list([")"|tail], total) do
+    sum_list([tail], total - 1)
   end
 end
