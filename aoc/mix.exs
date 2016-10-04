@@ -1,8 +1,8 @@
-defmodule One.Mixfile do
+defmodule AOC.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :one,
+    [app: :aoc,
      version: "0.1.0",
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
@@ -15,7 +15,7 @@ defmodule One.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [applications: [:logger],
-     mod: {One, []}]
+     mod: {AOC, []}]
   end
 
   # Dependencies can be Hex packages:

@@ -1,4 +1,4 @@
-defmodule One do
+defmodule AOC do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -8,13 +8,13 @@ defmodule One do
 
     # Define workers and child supervisors to be supervised
     children = [
-      # Starts a worker by calling: One.Worker.start_link(arg1, arg2, arg3)
-      # worker(One.Worker, [arg1, arg2, arg3]),
+      # Starts a worker by calling: AOC.Worker.start_link(arg1, arg2, arg3)
+      # worker(AOC.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: One.Supervisor]
+    opts = [strategy: :one_for_one, name: AOC.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

@@ -1,6 +1,6 @@
-defmodule OneTest do
+defmodule AOCTest do
   use ExUnit.Case
-  doctest One
+  doctest AOC
 
   test "the truth" do
     assert 1 + 1 == 2
