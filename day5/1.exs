@@ -40,4 +40,4 @@ defmodule NiceString do
   end
 end
 
-IO.puts NiceString.count(input) |> to_string
+IO.puts NiceString.count(input)
