@@ -22,18 +22,7 @@ defmodule NiceString do
   end
 
   defp check_vowels(line) do
-    new_line = line |> to_string
-    has_a = String.contains? new_line, "a"
-    has_e = String.contains? new_line, "e"
-    has_i = String.contains? new_line, "i"
-    has_o = String.contains? new_line, "o"
-    has_u = String.contains? new_line, "u"
-
-    if Enum.count([has_a,has_e,has_i,has_o,has_u], fn(x) -> x === true end) >= 3 do
-      true
-    else
-      false
-    end
+    length(for n <- line, n in [?a, ?e, ?i, ?o, ?u], do: n) > 2
   end
 
   defp check_double([_]) do
